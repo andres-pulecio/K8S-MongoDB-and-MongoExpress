@@ -14,13 +14,17 @@ kubectl get nodes
 minikube status   
 kubectl version
 ```
+##  Create Namespace "my-namespace"
+```sh
+kubectl create namespace my-namespace
+```
 ##  Run service
 ```sh
-kubectl apply -f mongo-secret.yaml
-kubectl apply -f configmap.yaml
-kubectl apply -f mongo.yaml
-kubectl apply -f mongo-express.yaml
-minikube service mongo-express-service
+kubectl apply -f mongo-secret.yaml -n my-namespace
+kubectl apply -f configmap.yaml -n my-namespace
+kubectl apply -f mongo.yaml -n my-namespace
+kubectl apply -f mongo-express.yaml -n my-namespace
+minikube service mongo-express-service -n my-namespace
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
