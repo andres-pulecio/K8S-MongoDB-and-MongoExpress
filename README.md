@@ -26,6 +26,13 @@ kubectl apply -f mongo.yaml -n my-namespace
 kubectl apply -f mongo-express.yaml -n my-namespace
 minikube service mongo-express-service -n my-namespace
 ```
+##  Run dashboard
+```sh
+kubectl proxy
+kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+```
+You can see the dashboard [here](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/) and use the previous token.
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [overwiew-screenshot]: images/overview.png
